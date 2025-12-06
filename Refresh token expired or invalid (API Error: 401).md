@@ -1,3 +1,5 @@
+# Installation and expiration
+
 # Fix Error: **"Refresh token expired or invalid (API Error: 401)"**  
 Qwen CLI + Claude-Code-Router Full Reset Guide
 
@@ -5,16 +7,8 @@ Below are the correct steps to fix the Qwen authentication error and reconnect i
 Written in simple Roman English, step-by-step.
 
 
-## ✅ step 1
-first uninstall qwen code 
 
-```
-
-npm uninstall -g @qwen-code/qwen-code
-
-```
-
-## ✅ Step 2  Reinstall Qwen CLI
+## ✅ Step 1  Install Qwen CLI
 
 Install latest Qwen CLI command:
 
@@ -26,7 +20,7 @@ npm install -g @qwen-code/qwen-code@latest
 
 ## ✅ Step 3  Authenticate Qwen
 
-Run:
+Run:(terminal)
 
 ```
 
@@ -45,10 +39,25 @@ Then authenticate:
 
 Browser will open →
 Select or add your Qwen account (working one) →
-Login →
-After success → Close the terminal.
+Login → After success
+return to terminal and send any prompt qwen give you response (as give gemini or claude) 
+Close the terminal.
+
 
 ## ✅ Step 4
+
+ **Create the Folders**
+ 
+Paste this into PowerShell:
+
+```
+
+New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\.claude-code-router", "$env:USERPROFILE\.claude"
+
+```
+press enter
+
+## ✅ Step 5
 
  Press **window + R**
  
@@ -65,16 +74,15 @@ Open file:
 
 oauth_creds.json
 
-
 (open in VS Code)
 
-Inside you will see:
+Inside you will see:(in file oauth_creds.json )
 
 ```
 {
-  "access_token": "YOUR_QWEN_ACCESS_TOKEN_HERE",
-  "token_type": "Bearer",
-  "refresh_token": "YOUR_QWEN_REFRESH_TOKEN_HERE",
+  "access_token": "YOUR_QWEN_ACCESS_TOKEN_HERE", //just see 
+  "token_type": "Bearer",                    // not a command
+  "refresh_token": "YOUR_QWEN_REFRESH_TOKEN_HERE", 
   "resource_url": "portal.qwen.ai",
   "expiry_date": 1764876220290
 }
@@ -82,18 +90,7 @@ Inside you will see:
 ```
 👉 Copy access_token value.(YOUR_QWEN_ACCESS_TOKEN_HERE)
 
-## ✅ Step 5
 
- **Create the Folders**
- 
-Paste this into PowerShell:
-
-```
-
-New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\.claude-code-router", "$env:USERPROFILE\.claude"
-
-```
-press enter
   
 
 ## ✅ Step 6
@@ -103,7 +100,7 @@ open terminal run below command
 
 👉find "api_key": "YOUR_QWEN_ACCESS_TOKEN_HERE"
 
-Here you add ACCESS_TOKEN you have already copy in step 4
+Here you add ACCESS_TOKEN  (you have already copy in step 5)
 
 ```
 
