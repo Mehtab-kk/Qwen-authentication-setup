@@ -14,7 +14,7 @@ npm uninstall -g @qwen-code/qwen-code
 
 ```
 
-## ✅ Step 2 — Reinstall Qwen CLI
+## ✅ Step 2  Reinstall Qwen CLI
 
 Install latest Qwen CLI command:
 
@@ -24,7 +24,7 @@ npm install -g @qwen-code/qwen-code@latest
 
 ```
 
-## ✅ Step 3 — Authenticate Qwen
+## ✅ Step 3  Authenticate Qwen
 
 Run:
 
@@ -48,10 +48,10 @@ Select or add your Qwen account (working one) →
 Login →
 After success → Close the terminal.
 
-## ✅ Step 4 — Get Your New Qwen Access Token
+## ✅ Step 4
 
-Press Windows + R
-
+ Press **window + R**
+ 
 Type:
 
 ```
@@ -80,40 +80,69 @@ Inside you will see:
 }
 
 ```
-👉 Copy access_token value.
+👉 Copy access_token value.(YOUR_QWEN_ACCESS_TOKEN_HERE)
 
-## ✅ Step 5 — Add Qwen Token into Claude-Code-Router
+## ✅ Step 5
 
-Press Windows + R
-
-Type:
+ **Create the Folders**
+ 
+Paste this into PowerShell:
 
 ```
-.claude-code-router
+
+New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\.claude-code-router", "$env:USERPROFILE\.claude"
+
+```
+press enter
+  
+
+## ✅ Step 6
+open terminal run below command 
+
+**Before Enter**
+
+👉find "api_key": "YOUR_QWEN_ACCESS_TOKEN_HERE"
+
+Here you add ACCESS_TOKEN you have already copy in step 4
+
 ```
 
-Press Enter
+@"
+{  
+  "LOG": true,  
+  "LOG_LEVEL": "info",  
+  "HOST": "127.0.0.1",  
+  "PORT": 3456,  
+  "API_TIMEOUT_MS": 600000,  
+  "Providers": [  
+    {  
+      "name": "qwen",  
+      "api_base_url": "https://portal.qwen.ai/v1/chat/completions",  
+      "api_key": "YOUR_QWEN_ACCESS_TOKEN_HERE",  
+      "models": [  
+        "qwen3-coder-plus",  
+        "qwen3-coder-plus",  
+        "qwen3-coder-plus"  
+      ]  
+    }  
+  ],  
+  "Router": {  
+    "default": "qwen,qwen3-coder-plus",  
+    "background": "qwen,qwen3-coder-plus",  
+    "think": "qwen,qwen3-coder-plus",  
+    "longContext": "qwen,qwen3-coder-plus",  
+    "longContextThreshold": 60000,  
+    "webSearch": "qwen,qwen3-coder-plus"  
+  }  
+}
+"@ | Out-File -FilePath "$env:USERPROFILE\.claude-code-router\config.json" -Encoding UTF8
 
-Open:
+```
 
-config.json
-
-
-(in VS Code)
-
-Find:
-
-"api_key": ""
+Then **Enter**
 
 
-Replace it with your Qwen access token:
-
-"api_key": "YOUR_QWEN_ACCESS_TOKEN_HERE"
-
-
-Save & close the file.
-
-✅ Step 6 — Restart & Test CCR
+## ✅ Step 6 Test
 
 Open PowerShell or CMD and run:
 
