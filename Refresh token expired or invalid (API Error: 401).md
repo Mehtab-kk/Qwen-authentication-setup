@@ -5,31 +5,14 @@ Below are the correct steps to fix the Qwen authentication error and reconnect i
 Written in simple Roman English, step-by-step.
 
 
-## ✅ Step 1 — Remove Old Qwen Credentials:
-
-### (a) Using Command
-
-```
-
-Remove-Item $env:USERPROFILE\.qwen\oauth_creds.json -ErrorAction Ignore
+## ✅ step 1
+first uninstall qwen code 
 
 ```
 
-### (b) Manual Method
-
-Press Windows + R
-
-Type:
+npm uninstall -g @qwen-code/qwen-code
 
 ```
-.qwen
-
-```
-Press Enter
-
-Delete the file:
-
-oauth_creds.json
 
 ## ✅ Step 2 — Reinstall Qwen CLI
 
